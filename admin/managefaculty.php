@@ -95,6 +95,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reset_faculty_id'])) 
       cursor: pointer;
       margin: 0 8px;
     }
+    .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Optional: prevents table from squashing too much */
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
   </style>
 </head>
 <body>
@@ -171,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reset_faculty_id'])) 
       <div class="form-group" style="margin-bottom: 15px;">
   <input type="text" id="facultySearch" class="form-control" placeholder="Search faculty by name..." onkeyup="filterFaculty()">
 </div>
-
+<div class="table-responsive">
       <table>
         <thead>
           <tr>
@@ -196,6 +215,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reset_faculty_id'])) 
           <?php endwhile; ?>
         </tbody>
       </table>
+</div>
       <div id="resetModal" class="modal" style="display:none;">
   <div class="modal-content">
     <h4>Reset Password</h4>

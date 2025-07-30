@@ -108,6 +108,56 @@ $assignments = $assignment_stmt->get_result();
       margin-top: 10px;
       align-items: center;
     }
+    .form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.save-button {
+  width: fit-content;
+  padding: 10px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Optional: prevents table from squashing too much */
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
   </style>
 </head>
 <body>
@@ -214,6 +264,7 @@ $assignments = $assignment_stmt->get_result();
               <?php if ($assignments->num_rows > 0): ?>
   <hr>
   <h5>Current Assignments</h5>
+      <div class="table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -236,12 +287,13 @@ $assignments = $assignment_stmt->get_result();
           <td><?= htmlspecialchars($row['day_of_week']) ?></td>
           <td><?= htmlspecialchars(date('g:i A', strtotime($row['start_time']))) ?> - <?= htmlspecialchars(date('g:i A', strtotime($row['end_time']))) ?></td>
           <td>
-            <a href="assignclasses.php?delete_assignment=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this assignment?');" class="btn btn-sm btn-danger">Delete</a>
+            <a href="assignclasses.php?delete_assignment=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this assignment?');"><i class="fas fa-trash" title="Delete"></i></a>
           </td>
         </tr>
       <?php endwhile; ?>
     </tbody>
   </table>
+      </div>
 <?php else: ?>
   <p style="margin-top: 1rem;">No assignments found.</p>
 <?php endif; ?>

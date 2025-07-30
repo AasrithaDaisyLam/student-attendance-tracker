@@ -28,7 +28,27 @@ if (isset($_GET['delete'])) {
 
   <!-- ✅ Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-pDpwO12OEzKUThVBDG9YkBGBcD5/kqfZHRq/0JvvS46FuJm0kuTx9ApcoWvF5a1p" crossorigin="anonymous"></script>
+<style>
+    .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Optional: prevents table from squashing too much */
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+</style>
 </head>
 <body>
 <div class="container">
@@ -132,6 +152,7 @@ if (isset($_GET['delete'])) {
   
 
   <!-- Student Table -->
+    <div class="table-responsive">
   <table class="table table-bordered table-striped">
     <thead class="table-dark">
       <tr>
@@ -162,6 +183,7 @@ if (isset($_GET['delete'])) {
       <?php endwhile; ?>
     </tbody>
   </table>
+</div>
 </div>
 
   </div>
